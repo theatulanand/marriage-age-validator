@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            background-color: rgb(245, 235, 235);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h1{
+            color: rgb(16, 13, 172);
+            text-align: center;
+            margin-top: 100px;
+        }
+        .Container{
+            border: 10px solid red;
+            width: 60%;
+            margin: auto;
+            margin-top: 40px;
+            border-radius: 10px;
+            background-image: url("https://mcdn.wallpapersafari.com/medium/6/16/bo73SI.jpg");
+        }
+
+        .input{
+            display: flex;
+            justify-content: space-evenly;
+            /* justify-content: space-around; */
+            margin: auto;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .child{
+            margin-bottom: 20px;
+        }
+
+        #gender{
+            font-size: larger;
+            border: 2px solid red;
+            border-radius: 10px;
+            cursor:pointer;
+        }
+
+        #year{
+            font-size: larger;
+            border: 2px solid red;
+            border-radius: 10px;
+            cursor:pointer;
+            width:140px;
+        }
+
+        .output{
+            display: flex;
+            justify-content: space-evenly;
+            /* justify-content: space-around; */
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            width: 100%
+        }
+
+        button{
+            height: 40px;
+            width: 122px;
+            cursor: pointer;
+            border: 2px solid blueviolet;
+            border-radius: 10px;
+            font-size: larger;
+            font-weight: bold;
+            color: red;
+            margin-top: 20px;
+        }
+
+        .output p{
+            height: 30px;
+            width: 122px;
+            cursor: pointer;
+            border: 2px solid blueviolet;
+            border-radius: 10px;
+            font-size: larger;
+            font-weight: bold;
+            color: red;
+            text-align: center;
+            padding-top: 8px;
+            /* padding-bottom: -20px; */
+            cursor: default;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Marriage Age Validator</h1>
+    <div class = "Container">
+        <div class="input">
+            
+            <div class="child">
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div class="child">
+                <input onfocus="(this.type='date')" id="year" placeholder="   Date Of Birth" value = "">
+            </div>
+
+        </div>
+
+        <div class="output">
+            <button onclick="showYear()">Check</button>
+            <P id = "result"></P>
+        </div>
+        <P style="text-align: center;">Made With ❤ @ Atul Kumar</P>
+    </div>
+
+   
+
+</body>
+<script>
+    function showYear(){
+        
+        var arr = document.getElementById('year').value.split('-').map(Number);
+        var age = 2022 - arr[0];
+        var gender = document.getElementById('gender').value;
+
+        if(document.getElementById('year').value == "" && gender == ""){
+            alert("!! Select Date OF Birth & Gender");
+            return;
+        }else if (document.getElementById('year').value == ""){
+            alert("!! Select Date OF Birth");
+            return;
+        }else if(gender == ""){
+            alert("Select Gender");
+            return "";
+        }
+
+        var ans = vaildCheck(age,gender);
+        document.getElementById('result').innerText = ans;
+    }
+
+    function vaildCheck(age,gender){
+
+        if(age < 18){
+            return "Not Valid"
+        }
+        if(age < 18 && gender == "female"){
+            return "Not Valid";
+        }else if(age < 22 && gender == "male"){
+            return "Not Valid";
+        }else{
+            return "Valid";
+        }
+    }
+</script>
+</html>
