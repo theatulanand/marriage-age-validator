@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exponent Calculator</title>
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            background-image: url('https://www.xmple.com/wallpaper/grid-blue-graph-paper-3840x2160-c2-22242c-505873-l2-2-44-a-0-f-20.svg');
+        }
+        h1{
+            color: white;
+            text-align: center;
+            margin:auto;
+            border-radius: 4px;
+            font-size: 70px;
+            margin-top: 50px;
+        }
+        #container{
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+            background-image: url("https://cdn.pixabay.com/photo/2020/09/08/18/50/alphabet-5555610_960_720.jpg");
+            border: 10px solid red;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        .input{
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .takenum{
+            border: 2px solid green;
+            border-radius: 5px;
+            font-size: larger;
+            width: 140px;
+            text-align: center;
+            margin: 20px;
+            margin-top: 50px;
+        }
+
+        .output{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        #submit{
+            border: 2px solid green;
+            border-radius: 5px;
+            font-size: larger;
+            width: 140px;
+            text-align: center;
+            margin: 20px;
+            margin-top: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: darkgreen;
+            color: antiquewhite;
+        }
+
+        #submit:hover{
+            background-color: blue;
+            color: antiquewhite;
+        }
+
+        p{
+            border: 2px solid green;
+            border-radius: 5px;
+            font-size: larger;
+            width: 140px;
+            text-align: center;
+            margin: 20px;
+            margin-top: 50px;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exponent Calculator</h1>
+    <div id = "container">
+        <div class="input">
+            
+                <div class="nums">
+                    <input value="" id = "num" class = "takenum" placeholder="Enter Number" type="number"/>
+                </div>
+
+                <div class="nums">
+                    <input value="" id="pow" class = "takenum" placeholder="Enter Power" type="number"/>
+                </div>
+        </div>
+
+        <div class="output">
+            <form id="myForm">
+                <input type = 'submit' id = "submit" />
+            </form>
+            <p>Result</p>
+        </div>
+
+    </div>
+</body>
+<script>
+   document.querySelector('#myForm').addEventListener('submit',calcExpo);
+
+   function calcExpo(){
+       event.preventDefault();
+
+       if(document.getElementById('num').value == ""){
+        alert("Enter Number");
+        return;
+       }
+
+       if(document.getElementById('pow').value == ""){
+        alert("Enter Power");
+        return;
+       }
+
+       num = document.querySelector("#num").value;
+       pow = document.querySelector('#pow').value;
+       
+       var res = 1;
+
+       for(var i = 0 ; i < pow ; i++){
+           res = res * num;
+       }
+
+      var arr = document.getElementsByTagName('p');
+      
+      arr[0].innerText = res;
+   }
+</script>
+</html>
